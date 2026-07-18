@@ -3,7 +3,7 @@
 Divides unspaced romanized (IAST) Sanskrit into words, preserving every
 character (spaces only; vowel-sandhi fusions and compounds stay joined).
 
-**Live demo:** https://naspatterns.github.io/padaccheda/
+**Live demo:** https://naspatterns.github.io/padaccheda/ · [Changelog](CHANGELOG.md)
 
 - **engine/** — dependency-free TypeScript engine + CLI.
   Char-CNN model (fp32 3.81 MB). Holdout quality: F1 0.958, unit-exact 74.4%.
