@@ -23,6 +23,18 @@ Digital Corpus of Sanskrit (DCS) and fine-tuned on an in-house editorial corpus.
 Only the trained weights are distributed here; the source corpus is not part of
 this repository.
 
+## Privacy / data collection
+
+When the app is built with a collection endpoint configured (`app/src/config.ts`
+→ `SUPABASE_URL` / `SUPABASE_ANON_KEY`), the corrections you make are sent
+**anonymously** to help train future models. Each submitted record contains the
+text you divided, the final divided result, the per-juncture decisions, the model
+tag and threshold, and a random per-browser id — **no name, email, or account**.
+You can turn this off any time via the **⋯ menu → "Share corrections to improve
+the model"**; a one-time notice explains this on first use. Turning it off does
+not affect the local-only Export feature. If no endpoint is configured (the
+default in this repo), nothing is ever sent.
+
 ## License
 
 [MIT](LICENSE) © 2026 Hyoung Seok Ham. The bundled Gentium Plus fonts are under

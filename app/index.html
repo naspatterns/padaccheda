@@ -26,11 +26,21 @@
             <span id="thresholdVal"></span>
           </label>
           <button id="resetBtn">Reset to engine output</button>
+          <label><input type="checkbox" id="shareData" /> Share corrections to improve the model</label>
           <button id="exportBtn">Export corrections (JSONL)</button>
         </div>
       </details>
     </div>
   </header>
+
+  <div id="notice" class="notice" hidden>
+    <span class="notice-text">Padaccheda improves as people use it — your corrections are sent
+      anonymously to help train the model. You can turn this off anytime in the ⋯ menu.</span>
+    <span class="notice-actions">
+      <button id="noticeOk" class="notice-btn">Got it</button>
+      <button id="noticeOff" class="notice-btn ghost">Turn off</button>
+    </span>
+  </div>
 
   <div id="warnings" hidden></div>
 

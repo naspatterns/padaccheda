@@ -5,7 +5,10 @@ import {
 } from './render.js';
 import {
   buildRecord, downloadText, exportJsonl, recordCount, saveRecord, stamp,
+  submitRecord, getClientId, getShareConsent, setShareConsent,
+  noticeSeen, markNoticeSeen, collectionConfigured,
 } from './feedback.js';
+import type { CorrectionRecord } from './feedback.js';
 import type { SplitWarning } from '@engine';
 
 const $ = <T extends HTMLElement>(id: string) =>
@@ -27,6 +30,10 @@ const els = {
   threshold: $<HTMLInputElement>('threshold'),
   thresholdVal: $<HTMLSpanElement>('thresholdVal'),
   charCount: $<HTMLSpanElement>('charCount'),
+  shareData: $<HTMLInputElement>('shareData'),
+  notice: $<HTMLDivElement>('notice'),
+  noticeOk: $<HTMLButtonElement>('noticeOk'),
+  noticeOff: $<HTMLButtonElement>('noticeOff'),
 };
 
 const worker = new Worker(new URL('./worker.ts', import.meta.url),
@@ -84,9 +91,22 @@ function rerender() {
   els.summary.textContent = summaryLine(state, els.showCandidates.checked);
 }
 
+// input text -> last submitted final_text, to skip re-sending unchanged records
+// (autosave fires on every divide / copy / download / unload).
+const lastSent = new Map<string, string>();
+
+function maybeSubmit(rec: CorrectionRecord) {
+  if (!getShareConsent()) return;
+  if (lastSent.get(rec.input) === rec.final_text) return;
+  lastSent.set(rec.input, rec.final_text);
+  void submitRecord(rec, getClientId());   // best-effort, fire-and-forget
+}
+
 function autosave() {
   if (state && state.hasUserActions()) {
-    saveRecord(buildRecord(state, modelTag));
+    const rec = buildRecord(state, modelTag);
+    saveRecord(rec);
+    maybeSubmit(rec);
   }
 }
 
@@ -221,5 +241,20 @@ els.exportBtn.onclick = () => {
   setStatus(`exported ${recordCount()} record(s) ✓`);
   setTimeout(() => setStatus(`ready (${modelTag})`), 2000);
 };
+
+// ---- data-collection consent (opt-out) ----------------------------------
+
+els.shareData.checked = getShareConsent();
+els.shareData.onchange = () => setShareConsent(els.shareData.checked);
+
+function dismissNotice() { markNoticeSeen(); els.notice.hidden = true; }
+els.noticeOk.onclick = dismissNotice;
+els.noticeOff.onclick = () => {
+  setShareConsent(false);
+  els.shareData.checked = false;
+  dismissNotice();
+};
+// Show the one-time notice only when collection is actually configured.
+if (collectionConfigured() && !noticeSeen()) els.notice.hidden = false;
 
 window.addEventListener('beforeunload', autosave);

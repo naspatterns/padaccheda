@@ -145,6 +145,25 @@ button:focus-visible, input:focus-visible, summary:focus-visible {
   border-bottom: 1px solid var(--border);
 }
 
+/* ---- data-collection notice (opt-out) ---- */
+#notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  padding: 0.55rem 1.25rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  font-size: 0.82rem;
+}
+#notice[hidden] { display: none; }
+.notice-text { flex: 1; min-width: 14rem; color: var(--muted); }
+.notice-actions { display: flex; gap: 0.4rem; flex: none; }
+.notice-btn { font-size: 0.78rem; padding: 0.2rem 0.7rem; }
+.notice-btn.ghost { color: var(--muted); }
+
 /* ---- panes ---- */
 main {
   flex: 1;
