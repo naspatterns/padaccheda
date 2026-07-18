@@ -1,0 +1,17 @@
+{
+  "name": "sanskrit-space-engine",
+  "version": "0.1.0",
+  "description": "IAST Sanskrit word-spacing engine (char-CNN, dependency-free, browser/Node)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "cli": "npm run -s build && node cli.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

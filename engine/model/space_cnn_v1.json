@@ -1,0 +1,213 @@
+{
+ "format_version": 1,
+ "model_tag": "cnn_v2b",
+ "emb": 64,
+ "ch": 224,
+ "blocks": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  1
+ ],
+ "vocab": {
+  "!": 2,
+  "'": 3,
+  ",": 4,
+  "-": 5,
+  ".": 6,
+  "0": 7,
+  "1": 8,
+  "2": 9,
+  "3": 10,
+  "4": 11,
+  "5": 12,
+  "6": 13,
+  "7": 14,
+  "8": 15,
+  "9": 16,
+  ";": 17,
+  "?": 18,
+  "Y": 19,
+  "Z": 20,
+  "a": 21,
+  "b": 22,
+  "c": 23,
+  "d": 24,
+  "e": 25,
+  "g": 26,
+  "h": 27,
+  "i": 28,
+  "j": 29,
+  "k": 30,
+  "l": 31,
+  "m": 32,
+  "n": 33,
+  "o": 34,
+  "p": 35,
+  "r": 36,
+  "s": 37,
+  "t": 38,
+  "u": 39,
+  "v": 40,
+  "y": 41,
+  "|": 42,
+  "ñ": 43,
+  "ā": 44,
+  "ī": 45,
+  "ś": 46,
+  "ū": 47,
+  "ḍ": 48,
+  "ḥ": 49,
+  "ṃ": 50,
+  "ṅ": 51,
+  "ṇ": 52,
+  "ṛ": 53,
+  "ṝ": 54,
+  "ṣ": 55,
+  "ṭ": 56
+ },
+ "default_threshold": 0.32,
+ "tensors": [
+  {
+   "name": "emb.weight",
+   "shape": [
+    57,
+    64
+   ],
+   "offset_floats": 0
+  },
+  {
+   "name": "convs.0.weight",
+   "shape": [
+    224,
+    64,
+    3
+   ],
+   "offset_floats": 3648
+  },
+  {
+   "name": "convs.0.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 46656
+  },
+  {
+   "name": "convs.2.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 46880
+  },
+  {
+   "name": "convs.2.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 197408
+  },
+  {
+   "name": "convs.4.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 197632
+  },
+  {
+   "name": "convs.4.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 348160
+  },
+  {
+   "name": "convs.6.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 348384
+  },
+  {
+   "name": "convs.6.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 498912
+  },
+  {
+   "name": "convs.8.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 499136
+  },
+  {
+   "name": "convs.8.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 649664
+  },
+  {
+   "name": "convs.10.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 649888
+  },
+  {
+   "name": "convs.10.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 800416
+  },
+  {
+   "name": "convs.12.weight",
+   "shape": [
+    224,
+    224,
+    3
+   ],
+   "offset_floats": 800640
+  },
+  {
+   "name": "convs.12.bias",
+   "shape": [
+    224
+   ],
+   "offset_floats": 951168
+  },
+  {
+   "name": "head.weight",
+   "shape": [
+    1,
+    224,
+    1
+   ],
+   "offset_floats": 951392
+  },
+  {
+   "name": "head.bias",
+   "shape": [
+    1
+   ],
+   "offset_floats": 951616
+  }
+ ],
+ "bin_bytes": 3806468,
+ "bin_sha256": "cff22d6847dc1345ff412226b159766abcad210908fc7a0f34447924e7c15b38"
+}

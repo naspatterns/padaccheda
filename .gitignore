@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+dist/
+*.log
+.vite/
+
+# Claude Code local tooling
+.claude/
+
+# Local-only training/eval corpus (TEI source texts — not for public distribution)
+TSP*_Round4_Q.xml
