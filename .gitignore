@@ -7,5 +7,9 @@ dist/
 # Claude Code local tooling
 .claude/
 
+# Machine-local handoff notes (synced via Drive only, never published)
+LOCAL_NOTES.md
+CLAUDE.md
+
 # Local-only training/eval corpus (TEI source texts — not for public distribution)
 TSP*_Round4_Q.xml
